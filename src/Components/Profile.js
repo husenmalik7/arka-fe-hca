@@ -4,14 +4,7 @@ import {CardColumns, Card, Row, Button,
         Table, Form, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-
 const url = 'http://localhost:9000/engineer/';
-
-
-
-
-   
-
 
 
 class Profile extends Component{
@@ -19,7 +12,7 @@ class Profile extends Component{
         super(props);
 
         this.state = {
-            id_engineer : 'qwewq',
+            id_engineer : '',
             profile: [],
         }
 
@@ -31,7 +24,6 @@ class Profile extends Component{
     componentDidMount(){
         const { match: { params } } = this.props;
         this.getDataById(params.id_engineer); 
-        console.log('qweqwe')       
     }
 
 
@@ -54,69 +46,72 @@ class Profile extends Component{
 
 
             
-<div className='container mt-5'>
+            <div className='container mt-5'>
 
-<Form>
-    <Row>
-        <Col>
-                <CardColumns>
-                    {console.log('sheet', this.state.profile)}
-                    
-                    <Card>
-                        <Card.Img variant="top" />  
-                        <Card.Body>
-                            <Card.Title> {this.state.profile.name}</Card.Title>
-                            <Card.Text> {this.state.profile.skill} </Card.Text>
-                            <Card.Text> {this.state.profile.total_project}</Card.Text>
-                            <Card.Text> {this.state.profile.total_project_done}</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </CardColumns>
-        </Col>
+                <Form>
+                    <Row>
+                        <Col>
+                                <CardColumns>
+                                    {console.log('sheet', this.state.profile)}
+                                    
+                                    <Card>
+                                        <Card.Img variant="top" />  
+                                        <Card.Body>
+                                            <Card.Title> {this.state.profile.name}</Card.Title>
+                                            <Card.Text> {this.state.profile.skill} </Card.Text>
+                                            <Card.Text> {this.state.profile.total_project}</Card.Text>
+                                            <Card.Text> {this.state.profile.total_project_done}</Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                </CardColumns>
+                        </Col>
 
-        <Col>
-                <Table striped bordered hover size="sm">
-              
-                <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>    {this.state.profile.name}               </td>
-                    </tr>
-                    <tr>
-                        <td>description</td>
-                        <td>    {this.state.profile.description}        </td>
-                    </tr>
-                    <tr>
-                        <td>location</td>
-                        <td>    {this.state.profile.location}           </td>
-                    </tr>
-                    <tr>
-                        <td>dateofbirth</td>
-                        <td>    {this.state.profile.dateofbirth}        </td>
-                    </tr>
-                    <tr>
-                        <td>total_project</td>
-                        <td>    {this.state.profile.total_project}      </td>
-                    </tr>
-                    <tr>
-                        <td>total_project_done</td>
-                        <td>    {this.state.profile.total_project_done} </td>
-                    </tr>                    
-                </tbody>
+                        <Col>
+                                <Table striped bordered hover size="sm">
+                            
+                                <tbody>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>    {this.state.profile.name}               </td>
+                                    </tr>
+                                    <tr>
+                                        <td>description</td>
+                                        <td>    {this.state.profile.description}        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>location</td>
+                                        <td>    {this.state.profile.location}           </td>
+                                    </tr>
+                                    <tr>
+                                        <td>dateofbirth</td>
+                                        <td>    {this.state.profile.dateofbirth}        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>total_project</td>
+                                        <td>    {this.state.profile.total_project}      </td>
+                                    </tr>
+                                    <tr>
+                                        <td>total_project_done</td>
+                                        <td>    {this.state.profile.total_project_done} </td>
+                                    </tr>                    
+                                </tbody>
 
-                </Table>
-        </Col>
-    </Row>
-</Form>
-
-            <Link to='/engineer'>
-               <Button>
-                    Back
-               </Button>
-            </Link>
+                                </Table>
+                        </Col>
+                    </Row>
+                </Form>
 
 
 
+                <button>
+                    Hire me
+                </button>
+
+                <Link to='/engineer'>
+                <Button>
+                        Back
+                </Button>
+                </Link>
 
             </div>
 

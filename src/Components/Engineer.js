@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import {  Button, InputGroup, ButtonGroup, Dropdown, DropdownButton,
-  FormControl, Form } from 'react-bootstrap';
+
 import { Link } from 'react-router-dom';
 
+import { connect } from 'react-redux';
 import { getAllEngineer } from '../Redux/Actions/actionEngineer';
-import Axios from "axios";
+
+import {  Button, InputGroup, ButtonGroup, Dropdown, DropdownButton,
+          FormControl, Form } from 'react-bootstrap';
+
+
 
 
 const URL = "http://localhost:9000/engineer";
@@ -108,26 +111,6 @@ class Engineer extends Component{
     })
 
   }
-
-
-  handleClickHire(event){
-    // const URL = "http://localhost:9000/engineer";
-    console.log(event.target.id)
-
-    let idid = event.target.id;
-
-
-    Axios.get(URL+'/'+idid)
-    .then(res =>{
-      console.log(idid,'lplplplplpl');
-      this.props.history.push('/engineer/'+idid);
-      console.log(res,"ini res")
-      console.log(this.props,"ini props");
-    })
-    .catch(err=>{
-      console.log(err)
-    })
-  }
   
 
   render(){
@@ -179,8 +162,7 @@ class Engineer extends Component{
                   
                   
                     <Link to={`/engineer/${item.id_engineer}`}>
-                    <button>hire == {item.id_engineer}</button>
-                    {/* <button id={item.id_engineer} onClick={this.handleClickHire.bind(this)}>hire -- {item.id_engineer} </button> */}
+                      <button>hire == {item.id_engineer}</button>
                     </Link>
 
                   <br />
