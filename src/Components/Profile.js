@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {CardColumns, Card, Row, Button, 
         Table, Form, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 const url = 'http://localhost:9000/engineer/';
@@ -37,7 +38,7 @@ class Profile extends Component{
     getDataById(p_id_engineer){
         axios.get(url+p_id_engineer)
         .then(item => { 
-            console.log(item.data.response[0]);
+            console.log(item.data.response[0],"data id");
             this.setState(  {profile: item.data.response[0]}  );
         })
         .catch(err => console.log(err));
@@ -48,6 +49,7 @@ class Profile extends Component{
 
 
     render(){
+        console.log(this.props,'props profile')
         return(
 
 
@@ -107,9 +109,11 @@ class Profile extends Component{
     </Row>
 </Form>
 
+            <Link to='/engineer'>
                <Button>
-
+                    Back
                </Button>
+            </Link>
 
 
 

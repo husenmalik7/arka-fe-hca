@@ -32,11 +32,11 @@ class App extends Component{
             </nav>
             <main>
               <Switch>
-                <Route path='/user/login' exact component={Login} />
-                <Route path='/user/register' exact component={Register} />
-                <Route path='/engineer' exact component={Engineer} />
-                <Route path='/' exact component={Home} />
-                <Route path='/engineer/:id_engineer' exact component={Profile} />
+                <Route exact path='/user/login'  component={Login} />
+                <Route exact path='/user/register'  component={Register} />
+                <Route exact path='/engineer' component={Engineer} />
+                <Route exact path='/'  component={Home} />
+                <Route exact path='/engineer/:id_engineer'  component={Profile} />
               </Switch>
             </main>
          </BrowserRouter> 
