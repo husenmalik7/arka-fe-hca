@@ -1,50 +1,68 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import {CardColumns, Card, Row, Button, 
-        Table, Form, Col } from 'react-bootstrap';
+
 import { Link } from 'react-router-dom';
+
+// import axios from 'axios';
+
+import { connect } from 'react-redux';
+import { getAllEngineer } from '../Redux/Actions/actionEngineer';
+
+import {CardColumns, Card, Row, Button, 
+    Table, Form, Col } from 'react-bootstrap';
+
+
 
 const url = 'http://localhost:9000/engineer/';
 
 
 class Profile extends Component{
-    constructor(props){
-        super(props);
+    
 
-        this.state = {
+        state = {
             id_engineer : '',
             profile: [],
         }
 
-    }
+    
 
 
 
 
     componentDidMount(){
-        const { match: { params } } = this.props;
-        this.getDataById(params.id_engineer); 
+        console.log('12121212', this.props.match.params.id_engineer);
+        this.getDataById( this.props.match.params.id_engineer ); 
     }
 
 
-    getDataById(p_id_engineer){
-        axios.get(url+p_id_engineer)
-        .then(item => { 
-            console.log(item.data.response[0],"data id");
-            this.setState(  {profile: item.data.response[0]}  );
-        })
-        .catch(err => console.log(err));
-    }
+    //------------------axios
+        // getDataById(p_id_engineer){
+        //     axios.get(url+p_id_engineer)
+        //     .then(item => { 
+        //         // console.log(item.data.response[0],"data id");
+        //         this.setState(  {profile: item.data.response[0]}  );
+        //     })
+        //     .catch(err => console.log(err));
+        // }
+    //------------------axios
+
+    //------------------redux
+        getDataById(p_id_engineer){
+            this.props.dispatch( getAllEngineer(url+p_id_engineer) )
+            .then(item => {
+                console.log('8898989', item.value.data.response[0]);
+                this.setState(  {profile: item.value.data.response[0]}  )
+            })
+            .catch(err => console.log(err) )
+        }
+    //------------------redux
 
 
 
 
 
     render(){
-        console.log(this.props,'props profile')
+        // console.log(this.props,'props profile')
         return(
-
-
             
             <div className='container mt-5'>
 
@@ -52,7 +70,7 @@ class Profile extends Component{
                     <Row>
                         <Col>
                                 <CardColumns>
-                                    {console.log('sheet', this.state.profile)}
+                                    {/* {console.log('sheet', this.state.profile)} */}
                                     
                                     <Card>
                                         <Card.Img variant="top" />  
@@ -117,7 +135,17 @@ class Profile extends Component{
 
         )
     }
+
 }
 
 
-export default Profile;
+const mapStateToProps = state => {
+    return {
+      profile: state.profile
+    }
+}
+  
+  
+  
+export default connect(mapStateToProps)(Profile);
+// export default Profile;

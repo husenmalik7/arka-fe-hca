@@ -38,7 +38,7 @@ class Engineer extends Component{
   getDataFromApi = async () => {
     await this.props.dispatch(  getAllEngineer(URL)  );
     const engineer = await this.props.engineer;    
-    console.log('90909090909090', engineer);
+    // console.log('90909090909090', engineer);
     this.setState({
       engineer: engineer.engineerData.response
     }) 
@@ -151,7 +151,7 @@ class Engineer extends Component{
 
             </ButtonGroup>
 
-        {console.log(engineer,'5555')}
+        {/* {console.log(engineer,'5555')} */}
 
           {
             engineer.map((item ) => {
