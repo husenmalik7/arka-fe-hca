@@ -2,7 +2,10 @@ const initialState = {
     engineerData: [],
     isPending: false,
     isRejected: false,
-    isFulfilled: false
+    isFulfilled: false,
+
+
+    hire_status: ''
 };
 
 const engineerReducer = (prevState = initialState, action) => {
@@ -28,6 +31,18 @@ const engineerReducer = (prevState = initialState, action) => {
                 engineerData: action.payload.data
                 //trye change data with response
             };
+
+        case "PUT_ENGINEER_FULFILLED":
+            console.log('222', action.payload.data);
+            return {
+                ...prevState,
+                isPending: false,
+                isFulfilled: true,
+
+                    
+            }
+            
+            
             
         default:
             return prevState;

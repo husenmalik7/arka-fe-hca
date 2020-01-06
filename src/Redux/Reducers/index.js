@@ -1,11 +1,14 @@
 import { combineReducers } from "redux";
 
-import engineer from './reducerEngineer'
+import engineer from './reducerEngineer';
 import user from './reducerUser';
+import company from './reducerCompany';
+
 
 const reducers = combineReducers({
   engineer,
-  user
+  user,
+  company
 });
 
 export default reducers;

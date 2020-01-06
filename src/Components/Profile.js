@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 // import axios from 'axios';
 
 import { connect } from 'react-redux';
-import { getAllEngineer } from '../Redux/Actions/actionEngineer';
+import { getAllEngineer, putEngineer } from '../Redux/Actions/actionEngineer';
 
-import {CardColumns, Card, Row, Button, 
-    Table, Form, Col } from 'react-bootstrap';
+import {CardColumns, Card, Row, Button, Nav,
+        Table, Form, Col, FormControl, InputGroup, Navbar
+        } from 'react-bootstrap';
 
 
 
@@ -21,17 +22,21 @@ class Profile extends Component{
         state = {
             id_engineer : '',
             profile: [],
+            id_company: 'kosong',
+            company_name: '',
+            hire_status: 0
         }
 
-    
-
-
-
+   
 
     componentDidMount(){
         console.log('12121212', this.props.match.params.id_engineer);
         this.getDataById( this.props.match.params.id_engineer ); 
+        // console.log('8888', localStorage.getItem('id_company'));
+        this.getProjectById( this.props.match.params.id_engineer);
     }
+
+    
 
 
     //------------------axios
@@ -45,17 +50,91 @@ class Profile extends Component{
         // }
     //------------------axios
 
+    getProjectById(p_id_engineer){
+        const project = '/project'
+        this.props.dispatch( getAllEngineer(url+p_id_engineer+project) )
+        .then(item => {
+            console.log('7795', item.value.data.response[0].name);
+            this.setState(  {
+                company_name: item.value.data.response[0].name,
+                hire_status: item.value.data.response[0].hire_status
+             } )
+        })
+        .catch(err => console.log(err) )
+    }
+
+
     //------------------redux
         getDataById(p_id_engineer){
             this.props.dispatch( getAllEngineer(url+p_id_engineer) )
             .then(item => {
                 console.log('8898989', item.value.data.response[0]);
-                this.setState(  {profile: item.value.data.response[0]}  )
+                this.setState(  {
+                    profile: item.value.data.response[0], 
+                    id_engineer: item.value.data.response[0].id_engineer,
+                    hire_status: item.value.data.response[0].hire_status
+                    // id_company: item.value.data.response[0].id_company
+                 } )
             })
             .catch(err => console.log(err) )
         }
     //------------------redux
 
+    handleClickHireMe(){
+        // console.log(this.state.id_engineer)
+        console.log('nona', this.state.profile);
+        console.log('pou', localStorage.getItem('id_company'))
+        const data = {
+            id_company: localStorage.getItem('id_company'),
+            id_user: this.state.profile.id_user,
+            name: this.state.profile.name,
+            description: this.state.profile.description,
+            skill: this.state.profile.skill,
+            location: this.state.profile.location,
+            dateofbirth: this.state.profile.dateofbirth,
+            showcase: this.state.profile.showcase,
+            datecreated: this.state.profile.dateofbirth,
+            dateupdated: this.state.profile.dateupdated,
+            total_project: this.state.profile.total_project,
+            total_project_done: this.state.profile.total_project_done,
+            hire_status: 1 //0 for iddle, 1 for pending, 2 for hired
+        }
+        this.props.dispatch(    putEngineer(url+this.state.id_engineer, data) )    
+        alert('succes hire');
+    }
+
+
+    handleClickAccept(){
+        // console.log(this.state.id_engineer)
+        console.log('nona', this.state.profile);
+        console.log('pou', localStorage.getItem('id_company'))
+        const data = {
+            id_company: this.state.profile.id_company,
+            id_user: this.state.profile.id_user,
+            name: this.state.profile.name,
+            description: this.state.profile.description,
+            skill: this.state.profile.skill,
+            location: this.state.profile.location,
+            dateofbirth: this.state.profile.dateofbirth,
+            showcase: this.state.profile.showcase,
+            datecreated: this.state.profile.dateofbirth,
+            dateupdated: this.state.profile.dateupdated,
+            total_project: this.state.profile.total_project,
+            total_project_done: this.state.profile.total_project_done,
+            hire_status: 2 //0 for iddle, 1 for pending, 2 for hired
+        }
+        this.props.dispatch(    putEngineer(url+this.state.id_engineer, data) )    
+        alert('succes accept');
+    }
+
+    logout = () => { //if u are not use arrow function it will error "props undefined"
+        console.log('logout man');
+        localStorage.clear();
+
+        this.props.history.push("/user/login");
+    } 
+
+   
 
 
 
@@ -63,8 +142,46 @@ class Profile extends Component{
     render(){
         // console.log(this.props,'props profile')
         return(
+
+
+
+            
+<div>
+
+
+    
+<Navbar bg="light">
+    <Navbar.Brand href="#home">
+      <img
+        alt=""
+        src="https://www.arkademy.com/img/logo%20arkademy-01.9c1222ba.png"
+        width="auto"
+        height="30"
+        className="d-inline-block align-top"
+      />{' '}
+    </Navbar.Brand>
+
+    <Form inline>
+        <InputGroup className="mr-sm-2" size="sm">
+        </InputGroup>
+    </Form>    
+
+    <Navbar.Collapse id="basic-navbar-nav" size="sm">
+      <Nav className="ml-auto" size="sm">
+          <Nav.Link href="/home">Home</Nav.Link>
+          <Nav.Link href="#link">{localStorage.getItem('email')}</Nav.Link>          
+          <Button variant="dark" align="right" size="sm" onClick={this.logout}>Logout</Button>
+      </Nav>
+    </Navbar.Collapse>
+    
+    
+</Navbar>
             
             <div className='container mt-5'>
+
+                {/* <p>id company mu = {this.state.profile.id_company}</p> */}
+
+
 
                 <Form>
                     <Row>
@@ -73,12 +190,13 @@ class Profile extends Component{
                                     {/* {console.log('sheet', this.state.profile)} */}
                                     
                                     <Card>
-                                        <Card.Img variant="top" />  
+                                        <Card.Img variant="top" src='https://source.unsplash.com/random?sig=4'/>  
                                         <Card.Body>
                                             <Card.Title> {this.state.profile.name}</Card.Title>
                                             <Card.Text> {this.state.profile.skill} </Card.Text>
-                                            <Card.Text> {this.state.profile.total_project}</Card.Text>
-                                            <Card.Text> {this.state.profile.total_project_done}</Card.Text>
+                                            
+                                            <Card.Text> <span className="glyphicon">&#x2710; </span> {this.state.profile.total_project} </Card.Text>
+                                            <Card.Text> <span className="glyphicon">&#x2709; </span> { (this.state.profile.total_project_done / this.state.profile.total_project) * 100 } % </Card.Text>
                                         </Card.Body>
                                     </Card>
                                 </CardColumns>
@@ -119,20 +237,102 @@ class Profile extends Component{
                     </Row>
                 </Form>
 
+         
+                {/* <p>role kamu = {localStorage.getItem('role')}</p> */}
 
 
-                <button>
-                    Hire me
-                </button>
+                {
+                   ( localStorage.getItem('role') === '2' )  ?
+                            <div>
 
-                <Link to='/engineer'>
-                <Button>
-                        Back
-                </Button>
-                </Link>
+                                {
+                                    (this.state.company_name !== '') ?
+
+
+                                    
+                                    
+                                    // <p>your hire status = {this.state.hire_status}</p>    
+
+
+                                        <div>
+                                        {
+                                            (this.state.hire_status == 1) ?
+                                            <Button onClick={this.handleClickAccept.bind(this)}>
+                                                Accept hiring from {this.state.company_name}
+                                            </Button>
+                                            :
+                                            <p>You are hired by {this.state.company_name}</p>
+
+
+
+                                        }
+                                        </div>
+
+                                        
+
+                                    
+
+                                        
+
+                                        
+
+                                    
+
+                                    
+                                    :
+                                    <p></p>
+                                }
+
+
+                                <br/><br/>
+
+                                <Button>
+                                    Edit my profile
+                                </Button>
+
+                                
+                            </div>
+                            : 
+                            
+
+                            <div className='container mt-5'>
+                                <Form>
+                                    <Row>
+                                        {
+                                            (this.state.company_name !== '') ?
+                                            <h2>
+                                                Waiting for confirmation
+                                            </h2>
+                                            :
+                                            <Button onClick={this.handleClickHireMe.bind(this)}>
+                                                Hire me
+                                            </Button>
+                                        }
+                                    </Row>    
+                                    <br/>
+                                    <Row>
+                                            <Link to='/engineer'>
+                                                <Button>
+                                                        Back
+                                                </Button>
+                                            </Link>
+                                        
+                                    </Row>
+                                </Form>
+
+                            
+            
+                            
+
+                            </div>
+                }
+
+
+                
+               
 
             </div>
-
+</div>
         )
     }
 
@@ -144,8 +344,6 @@ const mapStateToProps = state => {
       profile: state.profile
     }
 }
-  
-  
   
 export default connect(mapStateToProps)(Profile);
 // export default Profile;

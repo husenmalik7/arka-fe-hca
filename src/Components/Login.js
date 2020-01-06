@@ -11,9 +11,11 @@ class Login extends Component{
     constructor(){
         super()
         this.state = {
-            email: '11@gmail.com',
+            email: '',
             password: null,
-            role: null
+            role: null,
+            id_company: null,
+            id_engineer: null
         }
     }
 
@@ -27,23 +29,40 @@ class Login extends Component{
         }
 
         console.log('your data', data);
-        console.log(this.state.email);
-        console.log(this.state.password);
 
         
         axios.post(url, data)
         .then(res => {
-            console.log(res.data,"jjjjjjjjj")
+            console.log(res.data.data, 'ffff');
+            
+
+
             localStorage.setItem('token', res.data.data.token);
             localStorage.setItem('id_user', res.data.data.id_user);
             localStorage.setItem('email', res.data.data.email);
             localStorage.setItem('role', res.data.data.role);
 
-            this.props.history.push("/engineer")
-            console.log('asdasdasd');
+
+            
+    
+
+            if (res.data.data.id_engineer == null) {
+                console.log('you are login as a company');
+                localStorage.setItem('id_company', res.data.data.id_company);
+                this.props.history.push("/engineer")
+            } else {
+                localStorage.setItem('id_engineer', res.data.data.id_engineer);
+                console.log('you are login as an engineer');
+                this.props.history.push("/engineer/"+res.data.data.id_engineer);
+            }
+            //sekarang ke page engineer dia bisa terima hiring atau tidak
+            
+
+            
         })
         .catch(err=> {
             console.log(err)
+            alert('email or password not found');
         })
     }
 
