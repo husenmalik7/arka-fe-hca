@@ -12,51 +12,58 @@
 /* Control the left side */
 
 .buttonlogin {
-  background-color: #AB84C8;
+  background-color: #ab84c8;
   /* margin-right: 10px; */
   margin-bottom: 10px;
 }
 
 .buttonregister {
-  background-color: #AB84C8;
+  background-color: #ab84c8;
   /* margin-right: 10px; */
   margin-top: 10px;
   margin-bottom: 30px;
 }
 
 .dropdownregister {
-  background-color: #AB84C8;
+  background-color: #ab84c8;
   /* margin-right: 10px; */
 }
 
-.back-left{
-position: absolute;
-width: 832px;
-height: 1024px;
-left: 0px;
-top: 0px;
+.back-left {
+  position: absolute;
+  width: 832px;
+  height: 1024px;
+  left: 0px;
+  top: 0px;
 }
 
-.back-left2{
-background: linear-gradient(216.6deg, #F1C9EC 1.53%, rgba(255, 255, 255, 0) 81.18%), #AB84C8;
-border-radius: 4px;
+.back-left2 {
+  background: linear-gradient(
+      216.6deg,
+      #f1c9ec 1.53%,
+      rgba(255, 255, 255, 0) 81.18%
+    ),
+    #ab84c8;
+  border-radius: 4px;
 }
-
-
-
 
 .left {
   left: 0;
   /* background-color: rgb(125, 23, 194); */
-  
-  /* position: absolute; */
-/* width: 832px; */
-/* height: 1024px; */
-/* top: 0px; */
-color: white;
 
-background: linear-gradient(216.6deg, #F1C9EC 1.53%, rgba(255, 255, 255, 0) 81.18%), #AB84C8;
-border-radius: 4px;
+  /* position: absolute; */
+  /* width: 832px; */
+  /* height: 1024px; */
+  /* top: 0px; */
+  color: white;
+
+  background: linear-gradient(
+      216.6deg,
+      #f1c9ec 1.53%,
+      rgba(255, 255, 255, 0) 81.18%
+    ),
+    #ab84c8;
+  border-radius: 4px;
 }
 
 /* Control the right side */
