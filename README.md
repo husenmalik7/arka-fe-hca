@@ -1,23 +1,13 @@
-# FE-HCA-REDUX
+## Introduction
+HCA (hiring channel app) is an app (company) for hire some freelancer/engineer and add several project to
+
+## Features
+* Hire engineer
+* Login as company or engineer
+* Give any task to engineer hired
 
 
-
-
-intro
-
-
-
-HCA (hiring channel app) is an app (company) for hire some freelancer and add several project to, in this app (engineer/engineer) can register for be hired by (company)
-
-main feature of this app are
-
-a. hire freelancer
-
-b. give some project to freelancer (require a)
-
-
-c. registering your self as a freelancer to get be hire by one of companies
-
-
-
-
+## Screenshots
+<div align="center">
+    <img width="444" src="https://i.ibb.co/DKPhY4d/Untitled-design.png">
+</div>
