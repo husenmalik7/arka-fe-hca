@@ -4,9 +4,8 @@ import { Form } from "react-bootstrap";
 
 import "../styles/login.css";
 
-import arkaLogo from "../assets/arka-logo.svg";
-import paperPeople from "../assets/paper-people.svg";
 import Button from "../components/Button";
+import LeftSide from "../components/LeftSide";
 
 export default class Login extends Component {
   state = {
@@ -44,23 +43,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="login-container">
-        <div className="left-side">
-          <div className="arka-logo">
-            <img src={arkaLogo} alt="arka logo" />
-          </div>
-
-          <div className="paper-people">
-            <img src={paperPeople} alt="paper people" />
-          </div>
-
-          <div className="hiring-text">
-            <p>
-              <b> Hire expert freelancers for any job, online</b> <br />
-              Millions of small businesses use Freelancer to turn their ideas
-              into reality.
-            </p>
-          </div>
-        </div>
+        <LeftSide />
         <div className="right-side">
           <div className="title">
             <h1>Login</h1>
