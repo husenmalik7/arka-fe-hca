@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
 
 import Login from "./pages/Login";
 import TestPage from "./pages/TestPage";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <main>
           <Switch>
             <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
             <Route path="/main" component={TestPage} />
           </Switch>
         </main>

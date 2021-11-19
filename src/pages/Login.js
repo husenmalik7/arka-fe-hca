@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import "../styles/login.css";
 
@@ -45,10 +46,11 @@ export default class Login extends Component {
       <div className="login-container">
         <LeftSide />
         <div className="right-side">
-          <div className="title">
+          <div className="title height-30">
             <h1>Login</h1>
           </div>
-          <div className="input">
+
+          <div className="input height-45">
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
@@ -95,18 +97,21 @@ export default class Login extends Component {
               </Form.Group>
             </Form>
           </div>
-          <div className="button-container">
+
+          <div className="button-container height-25">
             <Button
               action={() => this.handleLogin()}
               buttonName="Login"
               buttonType="1"
             />
 
-            <Button
-              action={() => this.handleRegister()}
-              buttonName="Register"
-              buttonType="2"
-            />
+            <Link to="/register" style={{ textDecoration: "none" }}>
+              <Button
+                action={() => this.handleRegister()}
+                buttonName="Register"
+                buttonType="2"
+              />
+            </Link>
           </div>
         </div>
       </div>
