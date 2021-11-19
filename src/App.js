@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+// rules
+
+// this site can be accessed by engineer or company
+// engineer email data may same with company (you need add login as in web)
+
+import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
+
+import Login from "./pages/Login";
+import TestPage from "./pages/TestPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <nav>
+          <Link to="/main"></Link>
+          <Redirect exact from="/" to="/login" />
+        </nav>
+        <main>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/main" component={TestPage} />
+          </Switch>
+        </main>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,34 @@
+.button-wrapper {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  text-align: center;
+  width: 90%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.type-1 {
+  background: #ab84c8;
+  color: white;
+}
+
+.type-2 {
+  color: #ab84c8;
+  background-color: white;
+  border: 1.5px solid #ab84c8;
+}
+
+.type-1:hover {
+  background: #a576c9;
+}
+
+.type-2:hover {
+  background: rgb(240, 240, 240);
+}
