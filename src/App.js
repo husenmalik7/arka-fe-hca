@@ -13,12 +13,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <nav>
-          <Link to="/main"></Link>
-          <Redirect exact from="/" to="/login" />
-        </nav>
         <main>
           <Switch>
+            <Route exact path="/" render={() => <Redirect to="/login" />} />
+
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/main" component={TestPage} />
