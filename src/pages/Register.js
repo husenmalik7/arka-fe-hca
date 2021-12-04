@@ -2,10 +2,12 @@
 
 import LeftSide from "../components/LeftSide";
 import Button from "../components/Button";
+import baseUrl from "../helper/baseUrl";
 
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 import {
   lengthRegex,
@@ -76,6 +78,30 @@ const Register = () => {
         return alert("company description must be 3 to 100 characters length");
 
       console.log({ company });
+
+      let url = baseUrl + "/company/register";
+
+      axios
+        .post(url, {
+          name: company.name,
+          description: company.description,
+          email: company.email,
+          password: company.password,
+          location: company.location,
+        })
+        .then((response) => {
+          console.log(response.data);
+          let message = response.data.msg;
+
+          if (message.includes("already used")) {
+            alert(message);
+          } else {
+            alert(message);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else {
       let isEngineerNameValid = lengthRegex(engineer.name);
       if (!isEngineerNameValid)
@@ -92,6 +118,29 @@ const Register = () => {
         return alert("engineer location must be 3 to 100 characters length");
 
       console.log({ engineer });
+
+      let url = baseUrl + "/engineer/register";
+
+      axios
+        .post(url, {
+          name: engineer.name,
+          email: engineer.email,
+          password: engineer.password,
+          location: engineer.location,
+        })
+        .then((response) => {
+          console.log(response.data);
+          let message = response.data.msg;
+
+          if (message.includes("already used")) {
+            alert(message);
+          } else {
+            alert(message);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }
 
