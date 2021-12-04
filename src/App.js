@@ -3,7 +3,7 @@
 // this site can be accessed by engineer or company
 // engineer email data may same with company (you need add login as in web)
 
-import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Login from "./pages/Login";
 import TestPage from "./pages/TestPage";
