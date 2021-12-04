@@ -2,11 +2,13 @@ import React, { Component } from "react";
 
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "../styles/login.css";
 
 import Button from "../components/Button";
 import LeftSide from "../components/LeftSide";
+import baseUrl from "../helper/baseUrl";
 
 export default class Login extends Component {
   state = {
@@ -35,6 +37,32 @@ export default class Login extends Component {
       password: this.state.password,
       role: this.state.role,
     });
+
+    let url = baseUrl + `/${this.state.role}/login`;
+
+    axios
+      .post(url, {
+        email: this.state.email,
+        password: this.state.password,
+        role: this.state.role,
+      })
+      .then((response) => {
+        let message = response.data.msg;
+        console.log(message);
+
+        if (message.includes("password is false")) return alert(message);
+        if (message.includes("email is not found")) return alert(message);
+
+        console.log(response.data);
+
+        localStorage.setItem("email", response.data.data.email);
+        localStorage.setItem("id", response.data.data.id);
+        localStorage.setItem("token", response.data.data.token);
+        this.props.history.push("/main");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   handleRegister() {
