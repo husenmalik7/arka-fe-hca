@@ -17,6 +17,18 @@ export default class Login extends Component {
     role: "company",
   };
 
+  componentDidMount() {
+    let localStorageData = {
+      email: localStorage.getItem("email"),
+      id: localStorage.getItem("id"),
+      token: localStorage.getItem("token"),
+    };
+
+    if (localStorageData.token !== null) {
+      return this.props.history.push("/main");
+    }
+  }
+
   handleLogin() {
     console.log("login");
 

@@ -6,7 +6,7 @@ import baseUrl from "../helper/baseUrl";
 
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import {
@@ -17,7 +17,7 @@ import {
   alertPassword,
 } from "../helper/regex";
 
-const Register = () => {
+const Register = (props) => {
   const [role, setRole] = useState("company");
 
   const [company, setCompany] = useState({
@@ -33,6 +33,18 @@ const Register = () => {
     password: "",
     location: "",
   });
+
+  useEffect(() => {
+    let localStorageData = {
+      email: localStorage.getItem("email"),
+      id: localStorage.getItem("id"),
+      token: localStorage.getItem("token"),
+    };
+
+    if (localStorageData.token !== null) {
+      return props.history.push("/main");
+    }
+  }, []);
 
   function handleRole(role) {
     if (role === "company") {
