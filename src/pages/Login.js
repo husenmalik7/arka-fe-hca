@@ -32,6 +32,7 @@ export default class Login extends Component {
   handleLogin() {
     console.log("login");
 
+    // eslint-disable-next-line
     let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; //https://www.w3resource.com/javascript/form/email-validation.php
 
     if (!emailPattern.test(this.state.email))
