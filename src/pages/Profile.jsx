@@ -32,6 +32,11 @@ const Profile = (props) => {
       .get(url, config)
       .then((response) => {
         let resData = response.data.data;
+        let resMessage = response.data.msg;
+        if (resMessage.includes("expired")) {
+          alert("you must login to continue");
+          return props.history.push("/login");
+        }
 
         setData({
           name: resData.name,
@@ -45,7 +50,7 @@ const Profile = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  });
 
   return (
     <div className="profile">

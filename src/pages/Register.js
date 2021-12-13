@@ -34,7 +34,7 @@ const Register = (props) => {
     location: "",
   });
 
-  useEffect(() => {
+  useEffect((props) => {
     let localStorageData = {
       email: localStorage.getItem("email"),
       id: localStorage.getItem("id"),

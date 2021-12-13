@@ -62,7 +62,7 @@
 .name-section {
   /* background-color: red; */
   height: 40%;
-  justify-content: end;
+  justify-content: flex-end;
   display: flex;
   flex-direction: column;
   line-height: 0.8;
