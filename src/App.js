@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import TestPage from "./pages/TestPage";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/register" component={Register} />
             <Route path="/profile/:id" component={Profile} />
             <Route path="/main" component={TestPage} />
+            <Route path="/home" component={Home} />
           </Switch>
         </main>
       </BrowserRouter>
