@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import "../styles/profile.css";
+import backLogo from "../assets/left-arrow.png";
 import Button from "../components/Button";
 import baseUrl from "../helper/baseUrl";
 
@@ -52,9 +53,21 @@ const Profile = (props) => {
       });
   });
 
+  function handleBack() {
+    props.history.push("/home");
+  }
+
   return (
     <div className="profile">
       <div className="upper-background"></div>
+      <div className="back-button">
+        <img
+          onClick={() => handleBack()}
+          src={backLogo}
+          alt="back-button"
+          width={"22px"}
+        />
+      </div>
       <div className="left-box-container">
         <div className="left-box-upperside">
           <img

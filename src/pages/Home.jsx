@@ -13,6 +13,7 @@ const Home = (props) => {
 
   useEffect(() => {
     fetchData();
+    /* eslint-disable-next-line */
   }, []);
 
   let handleCard = (id) => {

@@ -27,14 +27,26 @@
   flex-direction: column;
 }
 
+.back-button {
+  /* background-color: tomato; */
+  padding-top: 1%;
+  padding-left: 1%;
+}
+
+.back-button img {
+  cursor: pointer;
+}
+
 .left-box-upperside {
   height: 90%;
+  /* background-color: thistle; */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .left-box-downside {
+  /* background-color: yellow; */
   width: 150px;
 }
 
