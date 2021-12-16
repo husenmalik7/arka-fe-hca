@@ -25,6 +25,12 @@
   border: 1.5px solid #ab84c8;
 }
 
+.type-disabled {
+  background: #baaac7;
+  color: white;
+  cursor: not-allowed;
+}
+
 .type-1:hover {
   background: #a576c9;
 }
