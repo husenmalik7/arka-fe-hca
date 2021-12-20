@@ -13,6 +13,7 @@ const Home = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [paginationObj, setPaginationObj] = useState({});
   const [name, setName] = useState("");
+  const [role, setRole] = useState("");
 
   useEffect(() => {
     getLocalStorage();
@@ -26,8 +27,10 @@ const Home = (props) => {
 
   function getLocalStorage() {
     let name = localStorage.getItem("name");
+    let role = localStorage.getItem("role");
 
     setName(name);
+    setRole(role);
   }
 
   let fetchData = (page) => {
@@ -98,13 +101,23 @@ const Home = (props) => {
     props.history.push("/login");
   };
 
+  function gotoProfile() {
+    if (role === "company") {
+      props.history.push("/company/profile");
+    } else {
+      console.log("gotoprofile engineer");
+    }
+  }
+
   // render
   return (
     <div className="main fd-col">
       <div className="nav">
         <div className="left-nav"></div>
         <div className="name-nav">
-          <p className="name">{name}</p>
+          <p onClick={() => gotoProfile()} className="name">
+            {name}
+          </p>
         </div>
         <div className="logout-nav">
           <img
