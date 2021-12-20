@@ -3,6 +3,8 @@ import axios from "axios";
 
 import baseUrl from "../helper/baseUrl";
 
+import logoutLogo from "../assets/logout.png";
+
 import "../styles/main.css";
 import "../styles/home.css";
 
@@ -10,8 +12,10 @@ const Home = (props) => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [paginationObj, setPaginationObj] = useState({});
+  const [name, setName] = useState("");
 
   useEffect(() => {
+    getLocalStorage();
     fetchData();
     /* eslint-disable-next-line */
   }, []);
@@ -19,6 +23,12 @@ const Home = (props) => {
   let handleCard = (id) => {
     props.history.push("/profile/" + id);
   };
+
+  function getLocalStorage() {
+    let name = localStorage.getItem("name");
+
+    setName(name);
+  }
 
   let fetchData = (page) => {
     let paramsPage = new URLSearchParams(window.location.search).get("page");
@@ -80,9 +90,31 @@ const Home = (props) => {
     </div>
   );
 
+  let logout = () => {
+    console.log("logout");
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+
+    props.history.push("/login");
+  };
+
+  // render
   return (
     <div className="main fd-col">
-      <div className="nav"></div>
+      <div className="nav">
+        <div className="left-nav"></div>
+        <div className="name-nav">
+          <p className="name">{name}</p>
+        </div>
+        <div className="logout-nav">
+          <img
+            onClick={() => logout()}
+            src={logoutLogo}
+            alt="logout"
+            width={"33px"}
+          />
+        </div>
+      </div>
       <div className="content fd-row">
         <div className="inner-content">
           {data.map((item, index) => card(item, index))}

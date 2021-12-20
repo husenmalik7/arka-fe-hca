@@ -11,6 +11,41 @@
   justify-content: center;
 }
 
+.left-nav {
+  /* background-color: blueviolet; */
+  width: 75%;
+}
+
+.name-nav {
+  /* background-color: tomato; */
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.name-nav .name {
+  /* background-color: lightcyan; */
+  cursor: pointer;
+  color: gray;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.logout-nav {
+  /* background-color: gold; */
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logout-nav img {
+  /* background-color: crimson; */
+  cursor: pointer;
+}
+
 .inner-content {
   /* background-color: red; */
   display: flex;

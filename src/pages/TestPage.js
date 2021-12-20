@@ -14,6 +14,7 @@ const TestPage = (props) => {
       email: localStorage.getItem("email"),
       id: localStorage.getItem("id"),
       token: localStorage.getItem("token"),
+      name: localStorage.getItem("name"),
     };
 
     console.log(localStorageData);

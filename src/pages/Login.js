@@ -14,7 +14,7 @@ export default class Login extends Component {
   state = {
     email: "",
     password: "",
-    role: "company",
+    role: "company", //default company
   };
 
   componentDidMount() {
@@ -45,7 +45,7 @@ export default class Login extends Component {
         "password must be between 8-15 characters, any word characters"
       );
 
-    console.log({
+    console.log("line 48", {
       email: this.state.email,
       password: this.state.password,
       role: this.state.role,
@@ -69,9 +69,11 @@ export default class Login extends Component {
         console.log(response.data);
 
         localStorage.setItem("email", response.data.data.email);
+        localStorage.setItem("name", response.data.data.name);
         localStorage.setItem("id", response.data.data.id);
         localStorage.setItem("token", response.data.data.token);
-        this.props.history.push("/main");
+        localStorage.setItem("role", this.state.role);
+        this.props.history.push("/home");
       })
       .catch(function (error) {
         console.log(error);
