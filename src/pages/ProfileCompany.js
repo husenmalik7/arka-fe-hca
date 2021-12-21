@@ -62,6 +62,7 @@ const ProfileCompany = (props) => {
       .catch((error) => {
         console.log(error);
       });
+    /* eslint-disable-next-line */
   }, []);
 
   function handleBack() {
@@ -92,7 +93,11 @@ const ProfileCompany = (props) => {
         </div>
 
         <div className="left-box-downside">
-          <Button buttonName="Edit" buttonType="1" />
+          <Button
+            action={() => props.history.push("/company/profile/edit")}
+            buttonName="Edit"
+            buttonType="1"
+          />
         </div>
       </div>
       <div className="right-box">
