@@ -1,3 +1,5 @@
+// when edit profile name not update because use the localstorage
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 

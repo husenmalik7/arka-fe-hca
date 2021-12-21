@@ -1,0 +1,44 @@
+.side {
+  background-color: rgba(171, 132, 200, 0.5);
+  width: 10%;
+}
+
+.side img {
+  cursor: pointer;
+  margin-left: 10%;
+  margin-top: 12%;
+}
+
+.middle {
+  /* background-color: whitesmoke; */
+  width: 80%;
+  display: flex;
+}
+
+.photo-form {
+  /* background-color: lightcoral; */
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5%;
+}
+
+.basic-form {
+  /* background-color: lightcyan; */
+  padding-right: 5%;
+  width: 60%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background-color: red; */
+  height: 90%;
+}
+
+.button-section {
+  height: 10%;
+  /* background-color: blue; */
+}

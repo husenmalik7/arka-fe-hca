@@ -10,6 +10,7 @@ import TestPage from "./pages/TestPage";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile"; //for engineer profile
 import ProfileCompany from "./pages/ProfileCompany";
+import EditProfileCompany from "./pages/Edit/Company";
 import Home from "./pages/Home";
 
 function App() {
@@ -23,7 +24,11 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/profile/:id" component={Profile} />
-            <Route path="/company/profile" component={ProfileCompany} />
+            <Route path="/company/profile" exact component={ProfileCompany} />
+            <Route
+              path="/company/profile/edit"
+              component={EditProfileCompany}
+            />
             <Route path="/main" component={TestPage} />
             <Route path="/home" component={Home} />
           </Switch>
