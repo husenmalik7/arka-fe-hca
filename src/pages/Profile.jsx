@@ -57,6 +57,30 @@ const Profile = (props) => {
     props.history.push("/home");
   }
 
+  function handleHire() {
+    let id_engineer = props.match.params.id;
+    let id_company = localStorage.getItem("id");
+
+    let url = baseUrl + "/engineer/hire";
+    let data = {
+      id_company,
+      id_engineer,
+    };
+
+    axios
+      .post(url, data)
+      .then((response) => {
+        console.log(response.data.msg);
+
+        if (response.data.msg.includes("success")) {
+          alert(response.data.msg);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <div className="profile">
       <div className="upper-background"></div>
@@ -81,7 +105,11 @@ const Profile = (props) => {
         </div>
 
         <div className="left-box-downside">
-          <Button buttonName="Hire Me" buttonType="1" />
+          <Button
+            action={() => handleHire()}
+            buttonName="Hire Me"
+            buttonType="1"
+          />
         </div>
       </div>
       <div className="right-box">

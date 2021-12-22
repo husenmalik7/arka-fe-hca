@@ -16,6 +16,7 @@ const EditProfileCompany = (props) => {
   useEffect(() => {
     let localStorageData = handleToken();
     getProfileById(localStorageData);
+    // eslint-disable-next-line
   }, []);
 
   function getProfileById(localStorageData) {
