@@ -98,6 +98,11 @@ const ProfileCompany = (props) => {
             buttonName="Edit"
             buttonType="1"
           />
+          <Button
+            action={() => props.history.push("/company/profile/engineer-list")}
+            buttonName="Engineer List"
+            buttonType="1"
+          />
         </div>
       </div>
       <div className="right-box">
