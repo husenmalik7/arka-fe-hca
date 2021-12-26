@@ -74,6 +74,7 @@ const Profile = (props) => {
 
         if (response.data.msg.includes("success")) {
           alert(response.data.msg);
+          handleBack();
         }
       })
       .catch((error) => {
