@@ -5,6 +5,12 @@
   display: flex;
 }
 
+.main-full {
+  max-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+}
+
 .fd-col {
   flex-direction: column;
 }

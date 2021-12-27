@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile"; //for engineer profile
 import ProfileCompany from "./pages/ProfileCompany";
 import EditProfileCompany from "./pages/Edit/Company";
+import EngineerList from "./pages/EngineerList";
 import Home from "./pages/Home";
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
             <Route path="/register" component={Register} />
             <Route path="/profile/:id" component={Profile} />
             <Route path="/company/profile" exact component={ProfileCompany} />
+            <Route
+              path="/company/profile/engineer-list"
+              component={EngineerList}
+            />
             <Route
               path="/company/profile/edit"
               component={EditProfileCompany}
