@@ -25,7 +25,7 @@ export default class Login extends Component {
     };
 
     if (localStorageData.token !== null) {
-      return this.props.history.push("/main");
+      return this.props.history.push("/home");
     }
   }
 
