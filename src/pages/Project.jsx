@@ -41,6 +41,18 @@ const Project = (props) => {
 
   function handleDone(id) {
     console.log("done", id);
+    let url = baseUrl + "/project/done";
+
+    axios
+      .put(url, { id })
+      .then((response) => {
+        console.log(response);
+        alert("success finish the project");
+        window.location.reload(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -60,7 +72,7 @@ const Project = (props) => {
           </thead>
           <tbody>
             {dataProject.map((item, index) => (
-              <tr>
+              <tr key={index}>
                 <td>{item.project_name}</td>
                 <td>{item.status}</td>
                 <td>
