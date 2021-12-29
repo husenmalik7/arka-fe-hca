@@ -13,6 +13,7 @@ import ProfileCompany from "./pages/ProfileCompany";
 import EditProfileCompany from "./pages/Edit/Company";
 import EngineerList from "./pages/EngineerList";
 import Home from "./pages/Home";
+import Project from "./pages/Project";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
             />
             <Route
               path="/company/profile/engineer-list/project"
-              component={TestPage}
+              component={Project}
             />
             <Route
               path="/company/profile/edit"
