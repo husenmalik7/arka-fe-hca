@@ -28,7 +28,12 @@ function App() {
             <Route path="/company/profile" exact component={ProfileCompany} />
             <Route
               path="/company/profile/engineer-list"
+              exact
               component={EngineerList}
+            />
+            <Route
+              path="/company/profile/engineer-list/project"
+              component={TestPage}
             />
             <Route
               path="/company/profile/edit"

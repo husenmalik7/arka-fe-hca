@@ -17,6 +17,9 @@ const TestPage = (props) => {
       name: localStorage.getItem("name"),
     };
 
+    console.log("9999999999999");
+    console.log(props.history.location.state);
+
     console.log(localStorageData);
 
     // let url = `http://localhost:3001/company/${localStorageData.id}`;

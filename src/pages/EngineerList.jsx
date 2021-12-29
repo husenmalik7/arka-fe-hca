@@ -38,12 +38,20 @@ const EngineerList = (props) => {
       });
   }
 
+  function goToProject(item) {
+    props.history.push("engineer-list/project", item);
+  }
+
   return (
     <div className="main-full">
       <div className="side"></div>
       <div className="middle engineer-list">
         {data.map((item, index) => (
-          <div className="engineer-card">
+          <div
+            key={index}
+            onClick={() => goToProject(item)}
+            className="engineer-card"
+          >
             <p>{item.name}</p>
             <p>{item.email}</p>
             <p>{item.location}</p>
