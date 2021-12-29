@@ -13,6 +13,7 @@ import "../styles/project.css";
 const Project = (props) => {
   const [dataEngineer, setDataEngineer] = useState({});
   const [dataProject, setDataProject] = useState([]);
+  const [projectName, setProjectName] = useState("");
 
   useEffect(() => {
     getData();
@@ -55,13 +56,45 @@ const Project = (props) => {
       });
   }
 
+  function handleAddProject() {
+    let engineer_id = props.history.location.state.engineer_id;
+    console.log(engineer_id);
+    console.log(projectName);
+
+    let url = baseUrl + "/project/add";
+    let data = {
+      engineer_id,
+      project_name: projectName,
+    };
+
+    axios
+      .post(url, data)
+      .then((response) => {
+        console.log(response.data);
+        alert(response.data.msg);
+        window.location.reload(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <div className="main-full">
       <div className="side"></div>
       <div className="middle project">
-        <p>create projet</p>
-        <p>asem</p>
+        <p>Create Project</p>
 
+        <div>
+          Project name{" "}
+          <input onChange={(e) => setProjectName(e.target.value)}></input>
+        </div>
+        <br />
+        <button onClick={() => handleAddProject()}>submit</button>
+
+        <br />
+        <br />
+        <p>Project List</p>
         <Table bordered hover>
           <thead>
             <tr>
