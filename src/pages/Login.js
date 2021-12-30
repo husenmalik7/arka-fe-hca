@@ -75,7 +75,7 @@ export default class Login extends Component {
         localStorage.setItem("role", this.state.role);
 
         if (this.state.role === "engineer") {
-          this.props.history.push("/engineer/profile");
+          this.props.history.push("/profile/engineer");
         } else {
           this.props.history.push("/home");
         }

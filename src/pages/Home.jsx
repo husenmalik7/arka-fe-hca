@@ -38,7 +38,7 @@ const Home = (props) => {
     console.log(role);
 
     if (role === "engineer") {
-      props.history.push("/engineer/profile");
+      props.history.push("/profile/engineer");
     }
   }
 
