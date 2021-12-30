@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
+
+import backLogo from "../assets/left-arrow.png";
 import baseUrl from "../helper/baseUrl";
 
 import "../styles/main.css";
@@ -44,7 +46,14 @@ const EngineerList = (props) => {
 
   return (
     <div className="main-full">
-      <div className="side"></div>
+      <div className="side">
+        <img
+          onClick={() => props.history.push("/company/profile")}
+          src={backLogo}
+          alt="back-button"
+          width={"22px"}
+        />
+      </div>
       <div className="middle engineer-list">
         {data.map((item, index) => (
           <div

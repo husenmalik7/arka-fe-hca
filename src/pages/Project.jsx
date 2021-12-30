@@ -6,6 +6,7 @@ import { Table } from "react-bootstrap";
 import baseUrl from "../helper/baseUrl";
 
 import checkLogo from "../assets/check.png";
+import backLogo from "../assets/left-arrow.png";
 
 import "../styles/main.css";
 import "../styles/project.css";
@@ -100,7 +101,14 @@ const Project = (props) => {
 
   return (
     <div className="main-full">
-      <div className="side"></div>
+      <div className="side">
+        <img
+          onClick={() => props.history.push("/company/profile/engineer-list")}
+          src={backLogo}
+          alt="back-button"
+          width={"22px"}
+        />
+      </div>
       <div className="middle project">
         <div className="upper-side">
           <div>
