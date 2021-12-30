@@ -79,18 +79,45 @@ const Project = (props) => {
       });
   }
 
+  function handleDismiss() {
+    let company_id = localStorage.getItem("id");
+    let engineer_id = props.history.location.state.engineer_id;
+    let data = { company_id, engineer_id };
+
+    let url = baseUrl + "/project/dismiss";
+
+    axios
+      .put(url, data)
+      .then((response) => {
+        console.log(response.data);
+        alert("success dismiss the engineer");
+        props.history.push("/home");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <div className="main-full">
       <div className="side"></div>
       <div className="middle project">
-        <p>Create Project</p>
+        <div className="upper-side">
+          <div>
+            <p>Create Project</p>
 
-        <div>
-          Project name{" "}
-          <input onChange={(e) => setProjectName(e.target.value)}></input>
+            <div>
+              Project name{" "}
+              <input onChange={(e) => setProjectName(e.target.value)}></input>
+            </div>
+            <br />
+            <button onClick={() => handleAddProject()}>submit</button>
+          </div>
+          <div className="dismiss">
+            <p>Dismiss Engineer</p>
+            <button onClick={() => handleDismiss()}>dismiss</button>
+          </div>
         </div>
-        <br />
-        <button onClick={() => handleAddProject()}>submit</button>
 
         <br />
         <br />

@@ -7,3 +7,15 @@
 .img-done {
   cursor: pointer;
 }
+
+.upper-side {
+  /* background-color: blueviolet; */
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-around;
+}
+
+.dismiss {
+  /* background-color: red; */
+}
