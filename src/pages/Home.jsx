@@ -34,6 +34,12 @@ const Home = (props) => {
 
     setName(name);
     setRole(role);
+
+    console.log(role);
+
+    if (role === "engineer") {
+      props.history.push("/engineer/profile");
+    }
   }
 
   let fetchData = (page) => {

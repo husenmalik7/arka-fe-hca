@@ -73,7 +73,12 @@ export default class Login extends Component {
         localStorage.setItem("id", response.data.data.id);
         localStorage.setItem("token", response.data.data.token);
         localStorage.setItem("role", this.state.role);
-        this.props.history.push("/home");
+
+        if (this.state.role === "engineer") {
+          this.props.history.push("/engineer/profile");
+        } else {
+          this.props.history.push("/home");
+        }
       })
       .catch(function (error) {
         console.log(error);
