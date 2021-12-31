@@ -1,3 +1,5 @@
 not yet maintained
 1. do logout, and then directly go to home. (you cant go directly)
 2. in home page, if email is too long, it will overflow
+3. local storage problem with session
+4. skill feature in engineer

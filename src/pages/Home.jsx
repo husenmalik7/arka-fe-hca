@@ -38,6 +38,7 @@ const Home = (props) => {
     console.log(role);
 
     if (role === "engineer") {
+      console.log(localStorage.getItem("token"));
       props.history.push("/profile/engineer");
     }
   }

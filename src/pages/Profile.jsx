@@ -8,19 +8,27 @@ import baseUrl from "../helper/baseUrl";
 
 const Profile = (props) => {
   const [data, setData] = useState({});
+  const [role, setRole] = useState("");
 
   useEffect(() => {
     let localStorageData = {
       email: localStorage.getItem("email"),
       id: localStorage.getItem("id"),
       token: localStorage.getItem("token"),
+      role: localStorage.getItem("role"),
     };
+
+    setRole(localStorageData.role);
 
     if (localStorageData.token === null) {
       alert("you must login to continue");
       return props.history.push("/login");
     }
 
+    getData(localStorageData);
+  }, []);
+
+  function getData(localStorageData) {
     let config = {
       headers: {
         Authorization: `Bearer ${localStorageData.token}`,
@@ -28,7 +36,13 @@ const Profile = (props) => {
     };
 
     let id = props.match.params.id;
+
+    if (id === "engineer") {
+      id = localStorageData.id;
+    }
+
     let url = `${baseUrl}/engineer/${id}`;
+
     axios
       .get(url, config)
       .then((response) => {
@@ -36,6 +50,7 @@ const Profile = (props) => {
         let resMessage = response.data.msg;
         if (resMessage.includes("expired")) {
           alert("you must login to continue");
+          localStorage.removeItem("token");
           return props.history.push("/login");
         }
 
@@ -51,7 +66,7 @@ const Profile = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }
 
   function handleBack() {
     props.history.push("/home");
@@ -82,16 +97,35 @@ const Profile = (props) => {
       });
   }
 
+  function handleViewProject() {
+    console.log("handleviwproject");
+  }
+
+  function handleEdit() {
+    console.log("handleeditdata");
+
+    props.history.push("/profile/engineer/edit");
+  }
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+
+    props.history.push("/login");
+  }
+
   return (
     <div className="profile">
       <div className="upper-background"></div>
       <div className="back-button">
-        <img
-          onClick={() => handleBack()}
-          src={backLogo}
-          alt="back-button"
-          width={"22px"}
-        />
+        {role === "engineer" ? null : (
+          <img
+            onClick={() => handleBack()}
+            src={backLogo}
+            alt="back-button"
+            width={"22px"}
+          />
+        )}
       </div>
       <div className="left-box-container">
         <div className="left-box-upperside">
@@ -106,11 +140,31 @@ const Profile = (props) => {
         </div>
 
         <div className="left-box-downside">
-          <Button
-            action={() => handleHire()}
-            buttonName="Hire Me"
-            buttonType="1"
-          />
+          {role === "engineer" ? (
+            <>
+              <Button
+                action={() => handleViewProject()}
+                buttonName="View Project"
+                buttonType="1"
+              />
+              <Button
+                action={() => handleEdit()}
+                buttonName="Edit Data"
+                buttonType="1"
+              />
+              <Button
+                action={() => handleLogout()}
+                buttonName="Logout"
+                buttonType="1"
+              />
+            </>
+          ) : (
+            <Button
+              action={() => handleHire()}
+              buttonName="Hire Me"
+              buttonType="1"
+            />
+          )}
         </div>
       </div>
       <div className="right-box">

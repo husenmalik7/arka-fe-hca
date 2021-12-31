@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile"; //for engineer profile
 import ProfileCompany from "./pages/ProfileCompany";
 import EditProfileCompany from "./pages/Edit/Company";
+import EditProfileEngineer from "./pages/Edit/Engineer";
 import EngineerList from "./pages/EngineerList";
 import Home from "./pages/Home";
 import Project from "./pages/Project";
@@ -25,7 +26,12 @@ function App() {
 
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/profile/:id" component={Profile} />
+            <Route path="/profile/:id" exact component={Profile} />
+            <Route
+              path="/profile/engineer/edit"
+              exact
+              component={EditProfileEngineer}
+            />
             <Route path="/company/profile" exact component={ProfileCompany} />
             <Route
               path="/company/profile/engineer-list"
