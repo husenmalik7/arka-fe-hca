@@ -15,6 +15,7 @@ import EditProfileEngineer from "./pages/Edit/Engineer";
 import EngineerList from "./pages/EngineerList";
 import Home from "./pages/Home";
 import Project from "./pages/Project";
+import ProjectEngineer from "./pages/ProjectEngineer";
 
 function App() {
   return (
@@ -41,6 +42,11 @@ function App() {
             <Route
               path="/company/profile/engineer-list/project"
               component={Project}
+            />
+
+            <Route
+              path="/profile/engineer/project"
+              component={ProjectEngineer}
             />
             <Route
               path="/company/profile/edit"

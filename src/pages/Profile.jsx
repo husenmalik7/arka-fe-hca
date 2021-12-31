@@ -98,12 +98,10 @@ const Profile = (props) => {
   }
 
   function handleViewProject() {
-    console.log("handleviwproject");
+    props.history.push("/profile/engineer/project");
   }
 
   function handleEdit() {
-    console.log("handleeditdata");
-
     props.history.push("/profile/engineer/edit");
   }
 

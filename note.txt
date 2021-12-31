@@ -3,3 +3,5 @@ not yet maintained
 2. in home page, if email is too long, it will overflow
 3. local storage problem with session
 4. skill feature in engineer
+5. engineer can see company name in project list
+5.5 better use other than do for ongoing, for example offering for accept
